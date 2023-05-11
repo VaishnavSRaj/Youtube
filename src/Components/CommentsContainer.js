@@ -135,9 +135,9 @@ const Comments = ({ data }) => {
   );
 };
 
-const CommentList=({Comment})=>{
+const CommentList=({Comment} )=>{
   return Comment.map((comments , index)=>
-    <div><Comments data={comments} key={index}/>
+    <div><Comments data={comments} />
     <div className="pl-5 py-1 border border-l-black ml-5">
       <CommentList Comment={comments.replies} key={index} />
       </div>
