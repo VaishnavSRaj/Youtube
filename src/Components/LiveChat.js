@@ -3,6 +3,8 @@ import ChatMessage from "./ChatMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../utils/chatSlice";
 import { generateRandomName, generateRandomMessages } from "../utils/helper";
+import{FaUserCircle} from "react-icons/fa"
+import{AiOutlineSend} from "react-icons/ai"
 
 const LiveChat = () => {
   const [liveMsg, setLiveMsg] = useState();
@@ -24,12 +26,12 @@ const LiveChat = () => {
 
   return (
     <>
-      <div className="ml-2 h-[550px] rounded-lg w-full border border-black overflow-hidden overflow-y-scroll flex flex-col-reverse shadow-lg ">
+      <div className="box-border overflow-y-scroll flex flex-col-reverse h-96">
         {ChatMessages.map((msg  , i) => (
           <ChatMessage name={msg.name} message={msg.message} key={i} />
         ))}
       </div>
-      <form className=" w-full border rounded-lg p-2 ml-2 border-black "
+      <form 
       onSubmit={(e)=>{
         e.preventDefault()
         dispatch(
@@ -41,19 +43,22 @@ const LiveChat = () => {
         )
         setLiveMsg("")
       }}>
+ <div className="bg-white flex p-2 gap-2 rounded-xl items-center">
+          <FaUserCircle className="md:text-4xl " />
+
         <input
-          className="w-72"
+          className="outline-none border-b-2 w-full border-blue-200"
+          placeholder="Say something..."
           type="text"
           value={liveMsg}
           onChange={(e) => setLiveMsg(e.target.value)}
         />
-        <button className=" px-3  mx-2 pl-5   ">
-          <img
-            className="w-5 h-5"
-            src="https://www.vhv.rs/dpng/d/184-1848924_send-message-send-message-icon-svg-hd-png.png"
-          />
+        <button className="bg-none border-none">
+        <AiOutlineSend className="w-10 cursor-pointer" />
         </button>
+        </div>
       </form>
+      
     </>
   );
 };

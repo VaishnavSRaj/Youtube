@@ -2,17 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import {CiSearch} from "react-icons/ci"
 
 const SearchBar = ({ setSearchQuery, suggestions }) => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [query, setQuery] = useState("");
+  
   const navigate = useNavigate();
 
   return (
-    <div className=" col-span-10 px-10">
-      <div>
+    <div className="my-2">
+      <div className="flex items-center shadow-lg md:shadow-none">
         <input
-          className=" w-1/2 border border-gray-400 p-2 rounded-l-full"
+          className="bg-gray-100 outline-blue-400 rounded-full p-1 m-1 w-full md:p-2 md:bg-white md:border-2 md:rounded-r-none md:mr-0 md:w-[35rem]"
           type="text"
           placeholder="search"
           onKeyDown={(e) => {
@@ -29,12 +31,12 @@ const SearchBar = ({ setSearchQuery, suggestions }) => {
           }}
           value={query}
         />
-        <button onClick={()=>{navigate("results/?search_query="+{query})}} className="p-2 py-2 border bg-gray-300 rounded-r-full">
-          Search
+        <button onClick={()=>{navigate(`results/?search_query=${query}`)}} className="hidden md:bg-gray-100 md:block p-[0.61rem] text-xl m-0 rounded-full rounded-l-none border-2 border-l-0">
+          <CiSearch/>
         </button>
       </div>
       {showSuggestions && suggestions.length > 0 && (
-        <div className="fixed bg-white shadow-lg rounded-lg w-[31rem] border border-gray-100 absolute">
+        <div className="border-2 rounded-xl py-2 w-[35rem] border-gray-100 absolute bg-white font-medium shadow-sm">
           <ul>
             {suggestions.map((item, i) => {
               return (
@@ -48,7 +50,7 @@ const SearchBar = ({ setSearchQuery, suggestions }) => {
                   <Link
                     to={`results/?search_query=${item}`}
                     className="flex px-5 py-1 gap-2 items-center hover:bg-gray-100"
-                  >
+                  > <CiSearch/>
                     {item}
                   </Link>
                 </li>

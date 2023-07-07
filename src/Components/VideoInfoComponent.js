@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import useVideoInfo from "../utils/useVideoInfo";
+
 import { kConverter } from "../utils/constants";
 
 const VideoInfoComponent = ({ info }) => {

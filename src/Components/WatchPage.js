@@ -18,21 +18,20 @@ const WatchPage = () => {
 
 
   return (
-    <div className=" w-full " >
-      <div className="flex  ">
-      <div className="pl-6 ">
-       <VideoPreview id={videoId}/>
-      </div>
+    <div className="md:flex md:flex-wrap md:justify-center md:w-full mt-4" >
+     
       
+       <VideoPreview id={videoId}/>
+      
+       <div className="hidden md:block w-1/4  rounded-xl border h-[30rem] shadow-sm">
 
-    <div className="w-full  bg-slate-100 ">
+    <div className="bg-gray-50">
         <LiveChat/>
       </div>
-      </div>
+    
       
-      <div className="py-2 px-3 m-3">
-      <CommentsContainer />
-      </div>
+     
+    </div>
     </div>
   );
 };

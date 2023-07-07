@@ -2,15 +2,12 @@ import React, { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
-import useVideoInfo from "../utils/useVideoInfo";
-import VideoPreviewShimmer from "./VideoPreviewShimmer";
+import SkeletonThumbnails from "../skeletons/SkeletonThumbnails";
+
 
 const VideoContainer = () => {
-
-  
   // console.log("custom-hook"+videos);
-  const [videos, setVideos] = useState([]);
-  
+  const [videos, setVideos] = useState(null);
 
   useEffect(() => {
     getvideo();
@@ -22,12 +19,16 @@ const VideoContainer = () => {
     setVideos(json.items);
     console.log(json);
   };
-  if (videos.length === 0) return <VideoPreviewShimmer />
+  if (!videos) return (
+    <div className="md:flex md:flex-wrap md:justify-center">
+   { [1, 2, 3, 4, 5 ,6,7,8,9,10].map((n) =><SkeletonThumbnails key={n} theme={""} />)}
+    </div>)
+    
   return (
-    <div className="flex flex-wrap">
+    <div className="md:flex md:flex-wrap md:justify-center">
       {videos.map((video) => (
         <Link to={"/watch?v=" + video.id} key={video.id}>
-          <VideoCard  info={video} />
+          <VideoCard info={video} />
         </Link>
       ))}
     </div>

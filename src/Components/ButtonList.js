@@ -5,7 +5,7 @@ const list=["All","Gamming","Music","News","Comedy","Computer ","All","Gamming",
 
 const ButtonList = () => {
   return (
-    <div className='flex'>
+    <div className="flex items-center border-b-2 md:border-none md:justify-center">
       {list.map((btn , index)=>{
        return <Button key={index} name={btn}/> 
        

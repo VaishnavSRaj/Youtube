@@ -44,20 +44,20 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col shadow-lg m-2 p-5  ">
-      <div className="flex col-span-1 ">
+    <div className="grid grid-flow-col shadow-lg m-2 p-2  items-center ">
+      <div className="flex col-span-1 items-center ">
         <img
           onClick={() => {
             toggleMenuHandler();
           }}
           alt="menu"
-          className="h-10 cursor-pointer"
+          className="h-10 cursor-pointer "
           src="https://www.svgrepo.com/show/312300/hamburger-menu.svg"
         />
         <Link to={"/"} >
         <img
           alt="logo"
-          className="h-8 mx-2"
+          className="h-6 mx-2"
           src="https://logodownload.org/wp-content/uploads/2014/10/youtube-logo-3-3.png"
           
         />

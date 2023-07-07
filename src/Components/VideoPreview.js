@@ -19,20 +19,23 @@ const VideoPreview = ({id}) => {
   };
   if (video.length === 0) return <VideoPreviewShimmer />
   return (
-    <div>
+    <div className="flex flex-col md:w-3/5 md:mr-3 mb-4">
+      <div>
     <iframe
-          width="1100"
-          height="550"
+          className="md:h-[30rem] h-60 w-full rounded-lg"
           src={"https://www.youtube.com/embed/" + id}
           title="YouTube video player"
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullScreen
         ></iframe>
+        
+        </div>
         <div>
         <VideoInfoComponent info={video}/>
       </div>
-    </div>
+      </div>
+    
   )
 }
 
